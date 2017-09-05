@@ -1,0 +1,135 @@
+	</div><!-- /container -->	
+<!-- RODAPE -->			
+<div class="container">
+	<div class="row" style="margin-bottom: 2%; margin-top: 2%" >
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse nav-responsive-collapse">
+						<ul class="nav">
+							<li><a style="color: #333;!important; font-size: 10px;!important;">&copy; JP 2014</a></li>
+						</ul>
+						<ul class="nav pull-right">
+							<li><a style="color: #333;!important; font-size: 10px;!important;">GRE - Operação - V3.0</a></li>
+						</ul>
+					</div><!-- /.nav-collapse -->
+				</div>
+			</div><!-- /navbar-inner-->
+		</div>
+	</div>
+</div>
+
+<script>
+	$('.textarea').wysihtml5({
+	"font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+	"emphasis": true, //Italics, bold, etc. Default true
+	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+	"html": false, //Button which allows you to edit the generated HTML. Default false
+	"link": false, //Button to insert a link. Default true
+	"image": false, //Button to insert an image. Default true,
+	"color": false //Button to change color of font  
+});
+</script>
+
+		
+<script>
+
+
+$("#myAlert").fadeOut(4000);
+
+
+// Read modals
+ $('[href=#readmodal]').click(function() 
+    {   
+        var essay_id = $(this).attr('id');
+
+        $.ajax({
+            type: 	'POST',
+            url: 	'read.php',
+            data: 	'id='+essay_id,
+            success: function(data) 
+            {
+                //$('#read').show();
+                $('#modalContent').show().html(data);
+            }
+        });
+    });
+</script>
+
+<script>
+// Delete confirmation modals
+$(document).ready(function(){
+	
+  $('[href=#userDelete]').click(function(){
+  
+		var del_id = null;
+  
+		del_id = $(this).attr('id');
+
+		$('button#confirm').click(function(id){
+			
+			$.ajax({
+				type: 'POST',//metodo pass POST or GET
+				url: 'userdelete.php',// page in that go put your post 
+				data: 'id='+del_id,// pass the id to the page
+				success:function(){
+						$("#userDelete").modal('hide');// hide the modal identifie id
+						location.reload(); //reload the page on the success
+						//$("#deletado").html(msg); //show message html of the page delete no id deletado
+				}
+			});
+		});
+    });
+});
+</script>
+
+<script>
+// Delete confirmation modals
+  $('[href=#deletemodal]').click(function(){
+  
+		var del_id = 0;
+  
+		var del_id = $(this).attr('id');
+		
+        $('button#confirm').click(function(id){
+			
+			$.ajax({
+				type: 'POST',//metodo pass POST or GET
+				url: 'delete.php',// page in that go put your post 
+				data: 'id='+del_id,// pass the id to the page
+				success:function(){
+						$("#deletemodal").modal('hide');// hide the modal identifie id
+						location.reload(); //reload the page on the success
+						//$("#deletado").html(msg); //show message html of the page delete no id deletado
+				  }
+			});
+		});
+    });
+</script>
+<!--<script>
+// UPDATE confirmation modals
+  $('[href=#userUpdate]').click(function(){
+  
+		var ID = 0;
+  
+		var ID = $(this).attr('id');
+			
+		$.ajax({
+			type: 'POST',//metodo pass POST or GET
+			url: 'userupdate.php',// page in that go put your post 
+			data: 'id='+ID,// pass the id to the page
+			success: function(data) {
+             $('#alert').html(data); 
+			 $('#alert').show();
+        }
+		});
+
+    });
+</script>-->
+	</body>
+</html>	

@@ -1,0 +1,17 @@
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container 
+{
+width: 1240px;
+}
+
+.table th, .table td {
+text-align: center;
+}
+
+.span6 {
+width: 619px;
+}
+
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th {
+background-color: #E8E8E8;
+}
+
