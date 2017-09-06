@@ -6,15 +6,12 @@ class Usuarios extends CI_Controller {
     public function index(){
         $this->output->enable_profiler(FALSE);
 
-        $this->load->helper('js');
-        $this->data['js'] = load_js(array('jquery-1.11.1.min.js','wysihtml5-0.3.0.js'));
-
         $this->load->model('usuario_model');
         $usuarios = $this->usuario_model->listaUsuario();
 
         $dados = array("usuarios" => $usuarios);
 
-        $this->load->view('template/header.php',$data);
+        $this->load->view('template/header.php');
         $this->load->view('template/navi.php');
         $this->load->view('usuarios/index.php', $dados);
         $this->load->view('template/footer.html');
