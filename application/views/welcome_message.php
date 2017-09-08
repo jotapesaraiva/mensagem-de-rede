@@ -23,16 +23,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</label>
 					<br/>
 					<label class="checkbox inline">
-						Mês: <select name="mes" class="select" onchange="this.form.submit()">
-									<?php foreach($meses as $value => $nome): ?>
-								<option value="<?=$value?>"  <?=($_POST['mes']==$value) ? "selected" : "" ?> ><?=$nome?></option>
-									<?php endforeach;?>
+						Mês:<select name="mes" class="select" onchange='this.form.submit()'>
+						    	<?php for ($i = 1; $i <= 12; $i++): ?>
+						        	<option value="<?= $i ?>" <?= (date('n') == $i) ? "selected" : "" ?>> <?= get_mes($i) ?> </option>
+						    	<?php endfor; ?>
 							</select>
 					</label>
 					<label class="checkbox inline">
 						Ano: <select name="ano" class="select" onchange="this.form.submit()">
 									<?php for($a = 2012; $a <= $curr_year; $a++) {?>
-								<option value="<?=$a?>" <?=($_POST['ano']==$a) ? "selected"  : "" ?> ><?=$a?></option>
+								<option value="<?=$a?>" <?=(date('Y')==$a) ? "selected"  : "" ?> ><?=$a?></option>
 									<?php	}?>
 							</select>
 					</label>
